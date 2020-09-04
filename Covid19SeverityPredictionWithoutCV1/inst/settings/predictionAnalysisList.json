@@ -22,7 +22,7 @@
   "organizationName": "OHDSI",
   "targetIds": [1162],
   "runPlpArgs": {
-    "nfold": 3,
+    "nfold": 0,
     "minCovariateFraction": 0.001,
     "splitSeed": null,
     "testSplit": "person",
@@ -17719,7 +17719,7 @@
       ]
     }}
   ],
-  "name": "Prediction model for WHO severity scores, from 1 & 2",
+  "name": "[JMPark] Prediction model for WHO severity scores, from 1 & 2",
   "modifiedDate": null,
   "covariateSettings": [{
     "VisitCountMediumTerm": false,
@@ -17842,5 +17842,5 @@
   "modifiedBy": null,
   "conceptSets": [],
   "id": 44,
-  "packageName": "Covid19SeverityPrediction1"
+  "packageName": "Covid19SeverityPredictionwWithoutCV"
 }

@@ -1,0 +1,9 @@
+{
+    "path" : "~/git/Covid19SeverityPrediction",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

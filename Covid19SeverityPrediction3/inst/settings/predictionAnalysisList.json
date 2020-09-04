@@ -20,9 +20,9 @@
     "firstExposureOnly": false
   }],
   "organizationName": "OHDSI",
-  "targetIds": [1142],
+  "targetIds": [1161],
   "runPlpArgs": {
-    "nfold": 5,
+    "nfold": 3,
     "minCovariateFraction": 0.001,
     "splitSeed": null,
     "testSplit": "person",
@@ -32,8 +32,9 @@
   "description": null,
   "version": "v2.7.0",
   "outcomeIds": [
-    1143,
-    1144
+    1158,
+    1159,
+    1160
   ],
   "skeletonVersion": "v0.0.1",
   "createdDate": null,
@@ -5401,14 +5402,14 @@
           }
         }
       },
-      "createdDate": "2020-09-01T05:00:36.527+0000",
+      "createdDate": "2020-09-02T04:47:42.347+0000",
       "createdBy": "ji myung park",
       "name": "Hospitalized COVID-19 patients, with oxygen therapy (WHO severity score 4)",
       "modifiedDate": null,
       "description": null,
       "expressionType": null,
       "modifiedBy": null,
-      "id": 1143
+      "id": 1158
     },
     {
       "expression": {
@@ -6843,14 +6844,123 @@
           }
         }
       },
-      "createdDate": "2020-09-01T05:00:36.957+0000",
+      "createdDate": "2020-09-02T04:47:42.963+0000",
       "createdBy": "ji myung park",
       "name": "Hospitalized COVID-19 patients, with severe diseases including mechanical ventilation, ECMO, and RRT",
       "modifiedDate": null,
       "description": null,
       "expressionType": null,
       "modifiedBy": null,
-      "id": 1144
+      "id": 1159
+    },
+    {
+      "expression": {
+        "ExpressionLimit": {"Type": "First"},
+        "CollapseSettings": {
+          "CollapseType": "ERA",
+          "EraPad": 0
+        },
+        "CensorWindow": {
+          "StartDate": null,
+          "EndDate": null
+        },
+        "ConceptSets": [{
+          "expression": {"items": [{
+            "isExcluded": false,
+            "concept": {
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_ID": 37311061,
+              "STANDARD_CONCEPT": "S",
+              "CONCEPT_CODE": "840539006",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_NAME": "Disease caused by severe acute respiratory syndrome coronavirus 2",
+              "DOMAIN_ID": "Condition",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "CONCEPT_CLASS_ID": "Clinical Finding",
+              "INVALID_REASON": "V"
+            },
+            "includeMapped": false,
+            "includeDescendants": false
+          }]},
+          "name": "Covid19",
+          "id": 0
+        }],
+        "cdmVersionRange": ">=5.0.0",
+        "CensoringCriteria": [],
+        "QualifiedLimit": {"Type": "First"},
+        "InclusionRules": [{
+          "expression": {
+            "CriteriaList": [{
+              "RestrictVisit": false,
+              "StartWindow": {
+                "UseEventEnd": false,
+                "Start": {
+                  "Days": null,
+                  "Coeff": -1
+                },
+                "End": {
+                  "Days": 0,
+                  "Coeff": 1
+                },
+                "UseIndexEnd": false
+              },
+              "IgnoreObservationPeriod": false,
+              "EndWindow": null,
+              "Criteria": {"ConditionOccurrence": {
+                "OccurrenceEndDate": null,
+                "CorrelatedCriteria": null,
+                "ConditionTypeExclude": false,
+                "CodesetId": 0,
+                "ProviderSpecialty": null,
+                "Gender": null,
+                "VisitType": null,
+                "First": null,
+                "OccurrenceStartDate": null,
+                "ConditionType": null,
+                "ConditionSourceConcept": null,
+                "StopReason": null,
+                "Age": null
+              }},
+              "Occurrence": {
+                "Type": 2,
+                "IsDistinct": false,
+                "Count": 1
+              }
+            }],
+            "Type": "ALL",
+            "DemographicCriteriaList": [],
+            "Groups": [],
+            "Count": null
+          },
+          "name": "Covid19",
+          "description": null
+        }],
+        "PrimaryCriteria": {
+          "CriteriaList": [{"Death": {
+            "CorrelatedCriteria": null,
+            "CodesetId": null,
+            "DeathSourceConcept": null,
+            "DeathTypeExclude": false,
+            "DeathType": null,
+            "OccurrenceStartDate": null,
+            "Gender": null,
+            "Age": null
+          }}],
+          "PrimaryCriteriaLimit": {"Type": "First"},
+          "ObservationWindow": {
+            "PostDays": 0,
+            "PriorDays": 0
+          }
+        }
+      },
+      "createdDate": "2020-09-02T04:47:43.493+0000",
+      "createdBy": "ji myung park",
+      "name": "All-cause Death of Covid19 Pts.",
+      "modifiedDate": null,
+      "description": null,
+      "expressionType": null,
+      "modifiedBy": null,
+      "id": 1160
     },
     {
       "expression": {
@@ -12213,14 +12323,14 @@
           }
         }
       },
-      "createdDate": "2020-09-01T05:00:36.027+0000",
+      "createdDate": "2020-09-02T04:47:43.990+0000",
       "createdBy": "ji myung park",
       "name": "Hospitalized COVID-19 patients, no oxygen therapy (WHO severity score 3)",
       "modifiedDate": null,
       "description": null,
       "expressionType": null,
       "modifiedBy": null,
-      "id": 1142
+      "id": 1161
     }
   ],
   "modelSettings": [
@@ -12247,7 +12357,7 @@
       ]
     }}
   ],
-  "name": "[JMPark] Prediction WHO severity scores of Covid-19, from 3",
+  "name": "Prediction model for WHO severity scores, from 3",
   "modifiedDate": null,
   "covariateSettings": [{
     "VisitCountMediumTerm": false,
@@ -12257,11 +12367,11 @@
     "ConditionOccurrenceLongTerm": false,
     "DrugEraStartLongTerm": false,
     "VisitCountShortTerm": false,
-    "Chads2Vasc": true,
+    "Chads2Vasc": false,
     "ConditionGroupEraStartLongTerm": false,
     "ConditionEraShortTerm": false,
-    "Dcsi": true,
-    "DrugGroupEraLongTerm": true,
+    "Dcsi": false,
+    "DrugGroupEraLongTerm": false,
     "DrugGroupEraShortTerm": true,
     "ConditionEraStartLongTerm": false,
     "temporal": false,
@@ -12270,12 +12380,12 @@
     "ConditionEraAnyTimePrior": false,
     "addDescendantsToInclude": false,
     "ConditionGroupEraStartMediumTerm": false,
-    "ProcedureOccurrenceLongTerm": true,
+    "ProcedureOccurrenceLongTerm": false,
     "DrugExposureLongTerm": false,
     "DrugEraStartShortTerm": false,
     "DistinctIngredientCountMediumTerm": false,
     "DistinctMeasurementCountShortTerm": false,
-    "MeasurementRangeGroupLongTerm": true,
+    "MeasurementRangeGroupLongTerm": false,
     "ConditionGroupEraOverlapping": false,
     "attr_fun": "getDbDefaultCovariateData",
     "MeasurementRangeGroupMediumTerm": false,
@@ -12285,7 +12395,7 @@
     "includedCovariateIds": [],
     "ConditionOccurrenceAnyTimePrior": false,
     "DistinctConditionCountLongTerm": false,
-    "MeasurementValueLongTerm": true,
+    "MeasurementValueLongTerm": false,
     "DrugEraShortTerm": false,
     "DrugGroupEraAnyTimePrior": false,
     "DrugEraOverlapping": false,
@@ -12295,7 +12405,7 @@
     "ConditionEraStartShortTerm": false,
     "ObservationAnyTimePrior": false,
     "VisitConceptCountShortTerm": false,
-    "DemographicsEthnicity": true,
+    "DemographicsEthnicity": false,
     "DistinctIngredientCountLongTerm": false,
     "ConditionOccurrencePrimaryInpatientShortTerm": false,
     "DemographicsAgeGroup": true,
@@ -12309,12 +12419,12 @@
     "ConditionGroupEraShortTerm": true,
     "ConditionEraStartMediumTerm": false,
     "VisitCountLongTerm": false,
-    "DemographicsRace": true,
+    "DemographicsRace": false,
     "ProcedureOccurrenceAnyTimePrior": false,
     "DistinctObservationCountLongTerm": false,
     "attr_class": "covariateSettings",
     "ProcedureOccurrenceMediumTerm": false,
-    "CharlsonIndex": true,
+    "CharlsonIndex": false,
     "DemographicsPriorObservationTime": false,
     "MeasurementShortTerm": true,
     "DistinctProcedureCountMediumTerm": false,
@@ -12322,7 +12432,7 @@
     "DrugGroupEraStartLongTerm": false,
     "DemographicsGender": true,
     "DeviceExposureAnyTimePrior": false,
-    "ObservationLongTerm": true,
+    "ObservationLongTerm": false,
     "DemographicsIndexYearMonth": true,
     "ConditionOccurrenceMediumTerm": false,
     "longTermStartDays": -365,
@@ -12335,23 +12445,23 @@
     "ProcedureOccurrenceShortTerm": true,
     "ObservationMediumTerm": false,
     "ConditionGroupEraAnyTimePrior": false,
-    "Chads2": true,
+    "Chads2": false,
     "DrugExposureAnyTimePrior": false,
-    "DeviceExposureLongTerm": true,
+    "DeviceExposureLongTerm": false,
     "DemographicsTimeInCohort": false,
     "DistinctMeasurementCountMediumTerm": false,
     "MeasurementValueShortTerm": true,
     "DeviceExposureMediumTerm": false,
     "ConditionGroupEraStartShortTerm": false,
     "ConditionOccurrencePrimaryInpatientMediumTerm": false,
-    "MeasurementLongTerm": true,
+    "MeasurementLongTerm": false,
     "DemographicsIndexYear": false,
     "MeasurementValueMediumTerm": false,
     "DrugEraStartMediumTerm": false,
     "MeasurementValueAnyTimePrior": false,
     "DistinctObservationCountShortTerm": false,
     "DrugEraMediumTerm": false,
-    "ConditionGroupEraLongTerm": true,
+    "ConditionGroupEraLongTerm": false,
     "DrugExposureShortTerm": false,
     "DistinctIngredientCountShortTerm": false,
     "DeviceExposureShortTerm": true,
@@ -12369,6 +12479,6 @@
   }],
   "modifiedBy": null,
   "conceptSets": [],
-  "id": 40,
+  "id": 43,
   "packageName": "Covid19SeverityPrediction3"
 }
