@@ -46,7 +46,7 @@ execute(connectionDetails = connectionDetails,
         packageResults = T,
         createValidationPackage = F, 
         minCellCount= 5,
-        createShiny = T,
+        createShiny = F,
         createJournalDocument = F,
         analysisIdDocument = 1)
 
